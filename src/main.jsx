@@ -9,6 +9,8 @@ import News from './components/News.jsx'
 import Error from './components/Error.jsx'
 import Exchange from "./components/Exchanges.jsx"
 import CryptoDetails from './components/CryptoDetails.jsx'
+import store from './components/store/appStore.js'
+import { Provider } from 'react-redux'
 
 const router = createBrowserRouter([
   {
@@ -17,7 +19,7 @@ const router = createBrowserRouter([
     errorElement:<Error></Error>,
     children: [
       {
-        path: "homepage",
+        path: "/",
         element: <Homepage></Homepage>,
       },
       {
@@ -36,14 +38,20 @@ const router = createBrowserRouter([
         path: "crypto/:coinId",
         element: <CryptoDetails></CryptoDetails>,
       },
+      {
+        path: "cryptoDetails",
+        element: <CryptoDetails></CryptoDetails>,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router ={router}>
-      <App />
-    </RouterProvider>
+    <Provider store={store}>
+      <RouterProvider router={router}>
+        <App />
+      </RouterProvider>
+    </Provider>
   </React.StrictMode>
 );

@@ -11,7 +11,7 @@ const options = {
 try {
   const response = await fetch(url, options);
   const result = await response.json();
-  console.log(result);
+  // console.log(result);
 } catch (error) {
-  console.error(error);
+  // console.error(error);
 }

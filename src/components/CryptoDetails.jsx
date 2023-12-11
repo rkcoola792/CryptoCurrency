@@ -4,7 +4,7 @@ const CryptoDetails = () => {
 
   return (
     <div>
-      Details
+      
     </div>
   )
 }

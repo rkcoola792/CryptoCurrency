@@ -7,7 +7,7 @@ import "../app.css"
 const Navbar = () => {
   return (
     <div className="navbar">
-      <div className="log-container text text-gray-300 flex flex-col gap-2 p-6 shadow-lg h-screen w-56">
+      <div className="log-container text text-gray-300 flex flex-col gap-2 p-6 h-screen w-56 ">
         {/* <AccountCircleIcon /> */}
         <div className="link hover:scale-105">
           <Link to="/">Cryptoverse</Link>

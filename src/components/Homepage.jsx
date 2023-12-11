@@ -1,19 +1,20 @@
-import React, { useEffect } from 'react'
-import { Typography,Row,Col,Statistic } from 'antd'
-import { useSelector } from 'react-redux'
-import { useCoinData } from './hooks/useCoinData'
-import {millify} from "millify"
+import React, { useEffect } from "react";
+import { Typography, Row, Col, Statistic } from "antd";
+import { useSelector } from "react-redux";
+import { useCoinData } from "./hooks/useCoinData";
+import { millify } from "millify";
+import Currencies from "./Currencies";
+import News from "./News";
 
-const {Title} = Typography
+const { Title } = Typography;
 const Homepage = () => {
-   const cryptoDetails = useCoinData();
-  const coinsData=useSelector(store=>store.coinData.coinsData)
-  console.log("coinnss data in selector", coinsData)
-  if(coinsData==null)
-  return "Loading..."
+  const cryptoDetails = useCoinData();
+  const coinsData = useSelector((store) => store.coinData.coinsData);
+  // console.log("coinnss data in selector", coinsData);
+  if (coinsData == null) return "Loading...";
   return (
     <div className="homepage">
-      <h1 className="text-3xl m-4">Global Crypto Currencies</h1>
+      <h1 className="text-3xl m-4 ">Global Crypto Currencies</h1>
       <Row className="m-4">
         <Col span={12}>
           <Statistic
@@ -46,8 +47,10 @@ const Homepage = () => {
           />
         </Col>
       </Row>
+      <Currencies ></Currencies>
+      <News></News>
     </div>
   );
-}
+};
 
-export default Homepage
+export default Homepage;

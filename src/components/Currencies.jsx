@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { millify } from "millify";
 import { Card, Space } from "antd";
@@ -7,19 +7,27 @@ const Currencies = () => {
   // const cryptoDetails = useCoinData();
   let coinsData = useSelector((store) => store.coinData.coinsData);
   const [topHeading, setTopHeading] = useState(true);
+  const [searchText,setSearchText]=useState("");
   coinsData = coinsData?.data?.coins;
   let topCoins;
   if (coinsData) {
     topCoins = coinsData;
     topCoins = topCoins.slice(0, 10);
-    console.log("topcoins", topCoins);
   }
   const [coins, setCoins] = useState(topCoins);
+  const [searchCoins, setSearchCoins] = useState(topCoins);
   console.log("coinsssssssssss", coins);
   const handleClick = () => {
     setTopHeading(false);
     setCoins(coinsData);
+    setSearchCoins(coinsData);
   };
+useEffect(()=>{
+const filteredData=coins.filter(ele=>ele.name.toLowerCase().includes(searchText))
+setSearchCoins(filteredData)
+},[searchText])
+
+console.log(searchText)
   if (coins == null) return "Loading...";
 
   return (
@@ -30,6 +38,8 @@ const Currencies = () => {
             className="p-2 rounded-lg px-4"
             type="text"
             placeholder="search crypto "
+            onChange={(e)=>setSearchText(e.target.value)}
+            // value={searchText}
           />
          
         </div>
@@ -44,7 +54,7 @@ const Currencies = () => {
         </button>
       </div>
       <div className="">
-        {coins.map((currency) => (
+        {searchCoins.map((currency) => (
           <Space direction="vertical" size={16} key={currency?.rank}>
             <Link to={`/crypto/${currency?.uuid}`}>
               <Card

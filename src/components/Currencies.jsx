@@ -5,7 +5,7 @@ import { Card, Space } from "antd";
 import { Link } from "react-router-dom";
 const Currencies = () => {
   // const cryptoDetails = useCoinData();
-  let coinsData = useSelector((store) => store.coinData.coinsData);
+  let coinsData = useSelector((store) => store?.coinData?.coinsData);
   const [topHeading, setTopHeading] = useState(true);
   const [searchText,setSearchText]=useState("");
   coinsData = coinsData?.data?.coins;

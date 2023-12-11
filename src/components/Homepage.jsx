@@ -8,7 +8,7 @@ import News from "./News";
 
 const { Title } = Typography;
 const Homepage = () => {
-  const cryptoDetails = useCoinData();
+  useCoinData();
   const coinsData = useSelector((store) => store.coinData.coinsData);
   // console.log("coinnss data in selector", coinsData);
   if (coinsData == null) return "Loading...";
@@ -47,8 +47,13 @@ const Homepage = () => {
           />
         </Col>
       </Row>
-      <Currencies ></Currencies>
-      <News></News>
+      <Currencies></Currencies>
+      <div className="m-4 mb-10">
+        <h1 className="text-3xl">Latest Crypto News</h1>
+        <p className="opacity-50">
+          <News></News>
+        </p>
+      </div>
     </div>
   );
 };
